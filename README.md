@@ -25,43 +25,43 @@ Things you may want to cover:
 
 <!-- usersテーブル -->
 
-|Column    |Type    |Options                       |
-|------    |----    |-------                       |
-|nickname  |string  |null: false, foreign_key: true|
-|email     |string  |null: false, unique: true     |
-|password  |string  |null: false                   |
-|first name|string  |null: false                   |
-|last name |string  |null: false                   |
-|first kana|string  |null: false                   |
-|last kana |string  |null: false                   |
-|birthday  |datetime|null: false                   |
+|Column             |Type    |Options                       |
+|------             |----    |-------                       |
+|nickname           |string  |null: false                   |
+|email              |string  |null: false, unique: true     |
+|encrypted_password |string  |null: false                   |
+|first_name         |string  |null: false                   |
+|last_name          |string  |null: false                   |
+|first_kana         |string  |null: false                   |
+|last_kana          |string  |null: false                   |
+|birthday           |date    |null: false                   |
 
 <!-- goodsテーブル -->
 
-|Column     |Type    |Options    |
-|------     |----    |-------    |
-|name       |string  |null: false|
-|category   |string  |null: false|
-|condition  |text    |null: false|
-|description|text    |null: false|
-|image      |string  |null: false|
-|price      |integer |null: false|
-|prefecture |string  |null: false|
-|days until |datetime|null: false|
-|burden     |boolean |null: false|
+|Column       |Type    |Options    |
+|------       |----    |-------    |
+|name         |string  |null: false|
+|category_id  |integer |null: false|
+|condition    |text    |null: false|
+|description  |text    |null: false|
+|image        |string  |null: false|
+|price        |integer |null: false|
+|prefecture_id|integer |null: false|
+|days_until   |datetime|null: false|
+|burden       |boolean |null: false|
 
-<!-- boughtテーブル -->
+<!-- buysテーブル -->
 
 |Column|Type|Options|
 |------|----|-------|
 
-<!-- shippingテーブル -->
+<!-- shippingsテーブル -->
 
 |Column        |Type   |Options    |
 |------        |----   |-------    |
-|postal        |integer|null: false|
-|prefecture    |string |null: false|
+|postal        |string |null: false, foreign_key: true|
+|prefecture_id |integer|null: false|
 |city          |string |null: false|
-|street address|integer|null: false|
-|building name |string |           |
-|phone number  |integer|null: false|
+|street_address|integer|null: false|
+|building_name |string |           |
+|phone_number  |string |null: false|
