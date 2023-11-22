@@ -36,33 +36,47 @@ Things you may want to cover:
 |last_kana          |string  |null: false                   |
 |birthday           |date    |null: false                   |
 
+has_many :goods
+has_many :boughts
+
 <!-- goodsテーブル -->
 
-|Column       |Type    |Options    |
-|------       |----    |-------    |
-|name         |string  |null: false|
-|category_id  |integer |null: false|
-|condition_id |integer |null: false|
-|description  |text    |null: false|
-|price        |integer |null: false|
-|prefecture_id|integer |null: false|
-|days_until_id|integer |null: false|
-|burden_id    |integer |null: false|
+|Column       |Type      |Options          |
+|------       |----      |-------          |
+|name         |string    |null: false      |
+|category_id  |integer   |null: false      |
+|condition_id |integer   |null: false      |
+|description  |text      |null: false      |
+|price        |integer   |null: false      |
+|prefecture_id|integer   |null: false      |
+|days_until_id|integer   |null: false      |
+|burden_id    |integer   |null: false      |
+|users        |references|foreign_key: true|
+
+belongs_to :users
+has_many :boughts
 
 <!-- boughtsテーブル -->
 
-|Column  |Type     |Options|
-|------  |----     |-------|
-|users_id |reference|null: false, foreign_key: true|
-|goods_id|reference|null: false, foreign_key: true|
+|Column  |Type      |Options|
+|------  |----      |-------|
+|users   |references|null: false, foreign_key: true|
+|goods   |references|null: false, foreign_key: true|
+
+belongs_to :users
+belongs_to :goods
+has_one :shippings
 
 <!-- shippingsテーブル -->
 
-|Column        |Type   |Options    |
-|------        |----   |-------    |
-|postal        |string |null: false, foreign_key: true|
-|prefecture_id |integer|null: false|
-|city          |string |null: false|
-|street_address|string |null: false|
-|building_name |string |           |
-|phone_number  |string |null: false|
+|Column         |Type      |Options    |
+|------         |----      |-------    |
+|postal         |string    |null: false|
+|prefecture_id  |integer   |null: false|
+|city           |string    |null: false|
+|street_address |string    |null: false|
+|building_name  |string    |           |
+|phone_number   |string    |null: false|
+|boughts        |references|foreign_key: true|
+
+belongs_to :boughts
