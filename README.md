@@ -36,10 +36,10 @@ Things you may want to cover:
 |last_kana          |string  |null: false                   |
 |birthday           |date    |null: false                   |
 
-has_many :goods
+has_many :products
 has_many :boughts
 
-<!-- goodsテーブル -->
+<!-- productsテーブル -->
 
 |Column       |Type      |Options          |
 |------       |----      |-------          |
@@ -61,10 +61,10 @@ has_one :bought
 |Column  |Type      |Options|
 |------  |----      |-------|
 |user    |references|null: false, foreign_key: true|
-|good    |references|null: false, foreign_key: true|
+|product    |references|null: false, foreign_key: true|
 
 belongs_to :user
-belongs_to :good
+belongs_to :product
 has_one :shipping
 
 <!-- shippingsテーブル -->
