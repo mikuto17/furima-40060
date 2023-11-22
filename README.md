@@ -42,18 +42,19 @@ Things you may want to cover:
 |------       |----    |-------    |
 |name         |string  |null: false|
 |category_id  |integer |null: false|
-|condition    |text    |null: false|
+|condition_id |integer |null: false|
 |description  |text    |null: false|
-|image        |string  |null: false|
 |price        |integer |null: false|
 |prefecture_id|integer |null: false|
-|days_until   |datetime|null: false|
-|burden       |boolean |null: false|
+|days_until_id|integer |null: false|
+|burden_id    |integer |null: false|
 
-<!-- buysテーブル -->
+<!-- boughtsテーブル -->
 
-|Column|Type|Options|
-|------|----|-------|
+|Column  |Type     |Options|
+|------  |----     |-------|
+|users_id |reference|null: false, foreign_key: true|
+|goods_id|reference|null: false, foreign_key: true|
 
 <!-- shippingsテーブル -->
 
@@ -62,6 +63,6 @@ Things you may want to cover:
 |postal        |string |null: false, foreign_key: true|
 |prefecture_id |integer|null: false|
 |city          |string |null: false|
-|street_address|integer|null: false|
+|street_address|string |null: false|
 |building_name |string |           |
 |phone_number  |string |null: false|
