@@ -51,7 +51,7 @@ has_many :boughts
 |prefecture_id|integer   |null: false      |
 |days_until_id|integer   |null: false      |
 |burden_id    |integer   |null: false      |
-|user         |references|foreign_key: true|
+|user         |references|null: false,foreign_key: true|
 
 belongs_to :user
 has_one :bought
@@ -77,6 +77,6 @@ has_one :shipping
 |street_address |string    |null: false|
 |building_name  |string    |           |
 |phone_number   |string    |null: false|
-|bought        |references|foreign_key: true|
+|bought        |references|null: false,foreign_key: true|
 
 belongs_to :bought
