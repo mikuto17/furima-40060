@@ -1,13 +1,14 @@
 FactoryBot.define do
   factory :user do
-    nickname { Faker::Internet.username }
-    password { Faker::Internet.password(min_length: 6) }
-    password_confirmation { password }
-    first_name { Faker::Japanese::Name.first_name }
-    last_name { Faker::Japanese::Name.last_name }
-    first_kana { Faker::Japanese::Name.first_name }
-    last_kana { Faker::Japanese::Name.last_name }
-    birthday { Faker::Date.birthday(min_age: 18, max_age: 65) }
+    nickname { 'やまだ' }
+    email { 'aaa@aaa' }
+    password { 'aaaa11' }
+    password_confirmation { 'aaaa11' }
+    first_name { '山田' }
+    last_name { '太郎' }
+    first_kana { 'ヤマダ' }
+    last_kana { 'タロウ' }
+    birthday { '2000-01-01' }
 
     trait :invalid_password do
       password { 'invalid_password' }
