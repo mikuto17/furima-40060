@@ -14,6 +14,6 @@ class Category < ActiveHash::Base
   ]
 
   include ActiveHash::Associations
-  belongs_to :product
+  has_many :products
 
 end

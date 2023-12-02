@@ -1,6 +1,12 @@
 class Product < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :category_id
+  belongs_to :category
+  belongs_to :condition
+  belongs_to :prefecture
+  belongs_to :days_until
+  belongs_to :burden
+
+  belongs_to :user
 
   validates :name, presence: true
   validates :description, presence: true
