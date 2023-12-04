@@ -8,5 +8,10 @@ FactoryBot.define do
     prefecture_id { '2' }
     days_until_id { '2' }
     burden_id { '2' }
+    association :user
+
+    after(:build) do |product|
+      product.image.attach(io: File.open('public/images/test_image.png'), filename: 'test_image.png')
+    end
   end
 end
