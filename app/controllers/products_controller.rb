@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_tweet, only: [:edit, :show]
+  before_action :set_product, only: [:edit, :show, :update]
   def index
     @products = Product.order("created_at DESC")
   end
@@ -42,7 +42,7 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:image, :name, :category_id, :condition_id, :description, :price, :prefecture_id, :days_until_id, :burden_id)
   end
 
-  def set_tweet
+  def set_product
     @product = Product.find(params[:id])
   end
 
