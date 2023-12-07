@@ -7,6 +7,7 @@ class Product < ApplicationRecord
   belongs_to :burden
 
   belongs_to :user
+  has_one :bought
   has_one_attached :image
 
   validates :image,presence: true
