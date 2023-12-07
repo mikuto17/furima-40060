@@ -1,4 +1,4 @@
-class Boughtsshipping
+class BoughtsShipping
   include ActiveModel::Model
   attr_accessor :user_id, :product_id, :postal, :prefecture_id, :city, :street_address, :building_name, :phone_number
 
