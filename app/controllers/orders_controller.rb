@@ -1,10 +1,9 @@
 class OrdersController < ApplicationController
   def index
+    @product = Product.find(params[:product_id])
   end
 
-  def new
-    @bought_shipping = BoughtShipping.new
-  end
+  
 
   def create
   @bought_shipping = BoughtShipping.new(bought_params)
@@ -21,5 +20,5 @@ class OrdersController < ApplicationController
   def bought_params
     params.require(:bought_shipping).permit(:user_is, :product_id, :postal, :prefecture_id, :city, :street_address, :building_name, :phone_number, :bought_id)
   end
-  
+
 end

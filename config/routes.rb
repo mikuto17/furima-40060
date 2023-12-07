@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :products do
   end
   resources :products do
-  resources :orders, only: [:index, :create]
+    resources :orders, only: [:index, :create]
   end
 
 end
