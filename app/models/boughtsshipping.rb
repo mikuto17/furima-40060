@@ -1,6 +1,6 @@
-class BoughtsShippings
+class Boughtsshipping
   include ActiveModel::Model
-  attr_accessor :user, :product, :postal, :prefecture_id, :city, :street_address, :building_name, :phone_number, :bought
+  attr_accessor :user_id, :product_id, :postal, :prefecture_id, :city, :street_address, :building_name, :phone_number
 
   with_options presence: true do
   validates :postal, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
@@ -13,7 +13,7 @@ class BoughtsShippings
 
   def save
   bought = Bought.create(product_id: product_id, user_id: user_id)
-  Shippings.create(postal: postal, prefecture_id: prefecture_id, city: city, street_address: street_address, building_name: building_name, phone_number: phone_number, bought_id: bought_id)
+  Shipping.create(postal: postal, prefecture_id: prefecture_id, city: city, street_address: street_address, building_name: building_name, phone_number: phone_number, bought_id: bought.id)
   end
 
 end

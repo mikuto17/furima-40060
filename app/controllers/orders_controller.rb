@@ -1,12 +1,14 @@
 class OrdersController < ApplicationController
   def index
     @product = Product.find(params[:product_id])
+    @boughts_shipping = Boughtsshipping.new
   end
 
   
 
   def create
-  @bought_shipping = BoughtShipping.new(bought_params)
+  @product = Product.find(params[:product_id])
+  @bought_shipping = Boughtsshipping.new(bought_params)
     if @bought_shipping.valid?
       @bought_shipping.save
       redirect_to root_path
@@ -18,7 +20,7 @@ class OrdersController < ApplicationController
   private
 
   def bought_params
-    params.require(:bought_shipping).permit(:user_is, :product_id, :postal, :prefecture_id, :city, :street_address, :building_name, :phone_number, :bought_id)
+    params.require(:boughtsshipping).permit(:product_id, :postal, :prefecture_id, :city, :street_address, :building_name, :phone_number).merge(user_id: current_user.id, product_id: @product.id)
   end
 
 end
