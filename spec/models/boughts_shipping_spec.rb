@@ -19,6 +19,10 @@ RSpec.describe BoughtsShipping, type: :model do
         @boughts_shipping.building_name = ''
         expect(@boughts_shipping).to be_valid
       end
+
+      it "priceとtokenがあれば保存ができること" do
+        expect(@boughts_shipping).to be_valid
+      end
     end
 
     context '内容に問題がある場合' do
@@ -26,6 +30,12 @@ RSpec.describe BoughtsShipping, type: :model do
         @boughts_shipping.postal = ''
         @boughts_shipping.valid?
         expect(@boughts_shipping.errors.full_messages).to include("Postal can't be blank")
+      end
+
+      it "tokenが空では登録できないこと" do
+        @boughts_shipping.token = nil
+        @boughts_shipping.valid?
+        expect(@boughts_shipping.errors.full_messages).to include("Token can't be blank")
       end
 
     it '3桁ハイフン4桁の半角文字列でないと保存できない' do
