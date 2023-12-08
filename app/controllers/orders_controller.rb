@@ -1,8 +1,14 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_product, only: [:index, :create]
+
   def index
+    if @product.user.id == current_user.id || @product.bought.present?
+      redirect_to root_path
+    else
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
-    @product = Product.find(params[:product_id])
     @boughts_shipping = BoughtsShipping.new
+    end
   end
 
   
@@ -34,4 +40,9 @@ class OrdersController < ApplicationController
         currency: 'jpy'                 
       )
   end
+
+  def set_product
+    @product = Product.find(params[:product_id])
+  end
+
 end
