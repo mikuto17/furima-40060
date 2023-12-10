@@ -26,7 +26,12 @@ class ProductsController < ApplicationController
     unless current_user == @product.user
       redirect_to root_path
     end
+    if @product.bought.present? 
+      redirect_to root_path
+    end
   end
+
+  
 
   def update
     if @product.update(product_params)
