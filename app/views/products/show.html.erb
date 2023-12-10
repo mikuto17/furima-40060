@@ -25,11 +25,11 @@
 
 
   <% if user_signed_in? && @product.bought.blank?%>
-    <% if user_signed_in? && current_user == @product.user %>
+    <% if current_user == @product.user %>
     <%= link_to "商品の編集", edit_product_path(@product.id), data: { turbo: false }, method: :get, class: "item-red-btn" %>
     <p class="or-text">or</p>
     <%= link_to "削除", product_path(@product.id), data: {turbo_method: :delete}, class:"item-destroy" %> 
-    <% elsif user_signed_in? && @product.bought.blank? %>
+    <% else %>
     <%= link_to "購入画面に進む", product_orders_path(@product.id) , data: { turbo: false }, class:"item-red-btn"%>
   <% end %>
     <% end %>
