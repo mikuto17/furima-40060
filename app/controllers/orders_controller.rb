@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
   private
 
   def bought_params
-    params.require(:boughts_shipping).permit(:product_id, :postal, :prefecture_id, :city, :street_address, :building_name, :phone_number).merge(user_id: current_user.id, product_id: @product.id, token: params[:token])
+    params.require(:boughts_shipping).permit(:postal, :prefecture_id, :city, :street_address, :building_name, :phone_number).merge(user_id: current_user.id, product_id: @product.id, token: params[:token])
   end
 
   def pay_item
