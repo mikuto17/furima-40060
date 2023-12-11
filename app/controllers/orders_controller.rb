@@ -14,7 +14,6 @@ class OrdersController < ApplicationController
   
 
   def create
-  @product = Product.find(params[:product_id])
   @boughts_shipping = BoughtsShipping.new(bought_params)
     if @boughts_shipping.valid?
       pay_item
